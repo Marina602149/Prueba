@@ -9,11 +9,11 @@ jobs:
       SECRET_DEV: ${{ secrets.DEV_TOKEN }}
     steps:
       - name: Comparar DEV_TOKEN con LOCAL_DEV_TOKEN
-        shell: powershell
+        shell: bash
         run: |
-          if ($env:SECRET_DEV -ceq $env:LOCAL_DEV_TOKEN) {
-            Write-Host "Los tokens COINCIDEN"
-          } else {
-            Write-Host "Los tokens NO coinciden"
+          if [ "${SECRET_DEV}" = "${LOCAL_DEV_TOKEN}" ]; then
+            echo "Los tokens COINCIDEN"
+          else
+            echo "Los tokens NO coinciden"
             exit 1
-          }
+          fi
