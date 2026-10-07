@@ -8,6 +8,10 @@ jobs:
     env:
       SECRET_DEV: ${{ secrets.DEV_TOKEN }}
     steps:
+      - name: Set PowerShell execution policy
+        shell: powershell
+        run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+
       - name: Comparar DEV_TOKEN con LOCAL_DEV_TOKEN
         shell: powershell
         run: |
